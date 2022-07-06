@@ -11,6 +11,7 @@ namespace Dislinkt.Notifications.Interfaces.Repositories
         Task CreateNotificationSettingsAsync(NewNotificationSettingsData settings);
 
         Task AddNotification(NotificationSettings settings);
+        Task UpdateNotificationSettings(NewNotificationSettingsData settings);
         Task<NotificationSettings> GetByUserId(Guid userId);
         Task<NotificationSettings> GetById(Guid id);
     }

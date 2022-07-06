@@ -58,5 +58,18 @@ namespace Dislinkt.Notifications.MongoDB.Repositories
             await _queryExecutor.UpdateAsync(filter, update);
         }
 
+        public async Task UpdateNotificationSettings(NewNotificationSettingsData settings)
+        {
+            var filter = Builders<NotificationSettingsEntity>.Filter.Eq(u => u.UserId, settings.UserId);
+
+            var update = Builders<NotificationSettingsEntity>.Update
+                .Set(u => u.MessageOn, settings.MessageOn)
+                .Set(u => u.PostOn, settings.PostOn)
+                .Set(u => u.JobOn, settings.JobOn)
+                .Set(u => u.FriendRequestOn, settings.FriendRequestOn);
+
+            await _queryExecutor.UpdateAsync(filter, update);
+        }
+
     }
 }

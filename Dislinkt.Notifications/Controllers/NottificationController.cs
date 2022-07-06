@@ -28,6 +28,15 @@ namespace Dislinkt.Notifications.Controllers
 
         }
 
+
+        [HttpPost]
+        [Route("/update-notification-settings")]
+        public async Task UpdateNotificationSettings([FromBody] NewNotificationSettingsData settings)
+        {
+            await _notificationRepository.UpdateNotificationSettings(settings);
+
+        }
+
         [HttpGet]
         [Route("/get-by-userId")]
         public async Task<NotificationSettings> GetByFromAndTo(Guid userId)

@@ -1,5 +1,7 @@
+using Dislinkt.Notifications.Interfaces.Repositories;
 using Dislinkt.Notifications.MongoDB.Common;
 using Dislinkt.Notifications.MongoDB.Factories;
+using Dislinkt.Notifications.MongoDB.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -54,6 +56,7 @@ namespace Dislinkt.Notifications
             services.AddScoped<IDatabaseFactory, DatabaseFactory>();
             services.AddScoped<MongoDbContext>();
             services.AddScoped<IQueryExecutor, QueryExecutor>();
+            services.AddScoped<INotificationRepository, NotificationRepository>();
             BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String));
 
         }
