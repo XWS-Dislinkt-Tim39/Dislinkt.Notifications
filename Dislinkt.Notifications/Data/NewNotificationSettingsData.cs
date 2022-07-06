@@ -2,7 +2,7 @@
 
 namespace Dislinkt.Notifications.Data
 {
-    public class NewNotificationSerttingsData
+    public class NewNotificationSettingsData
     {
         public Guid UserId { get; set; }
         public bool MessageOn { get; set; }

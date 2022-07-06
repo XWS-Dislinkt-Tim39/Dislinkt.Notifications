@@ -17,7 +17,7 @@ namespace Dislinkt.Notifications.MongoDB.Entities
         public NotificationEntity[] Notifications { get; set; }
 
 
-        public static NotificationSettingsEntity ToMessageEntity(NotificationSettings settings)
+        public static NotificationSettingsEntity ToNotificationSettingsEntity(NotificationSettings settings)
         {
             return new NotificationSettingsEntity
             {
@@ -31,7 +31,7 @@ namespace Dislinkt.Notifications.MongoDB.Entities
 
             };
         }
-        public NotificationSettings ToNotificationsSetting()
+        public NotificationSettings ToNotificationSettings()
             => new NotificationSettings(this.Id, this.UserId, this.MessageOn,this.PostOn,this.JobOn,this.FriendRequestOn, this.Notifications == null ? Array.Empty<Notification>() : this.Notifications.Select(p => p.ToNotification()).ToArray());
 
     }
