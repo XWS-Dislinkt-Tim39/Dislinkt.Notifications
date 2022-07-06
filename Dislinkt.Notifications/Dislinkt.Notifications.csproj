@@ -15,11 +15,5 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-    <Folder Include="Interfaces\Repositories\" />
-    <Folder Include="MongoDB\Repositories\" />
-  </ItemGroup>
-
 
 </Project>
