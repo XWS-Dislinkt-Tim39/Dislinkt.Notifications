@@ -1,0 +1,22 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "GrpcNotificationService";
+
+package notificationSettings;
+
+service notificationSettingsGreeter{
+	rpc CreateSettings (NotificationSettingsRequest) returns (NotificationSettingsReply);
+}
+
+message NotificationSettingsRequest{
+	string UserId=1;
+	bool MessageOn=2;
+	bool PostOn=3;
+	bool JobOn=4;
+	bool FriendRequestOn=5;
+}
+
+message NotificationSettingsReply{
+	bool successful=1;
+	string message=2;
+}
