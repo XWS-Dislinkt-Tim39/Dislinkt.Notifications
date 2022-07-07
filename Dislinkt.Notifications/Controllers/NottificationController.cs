@@ -54,7 +54,7 @@ namespace Dislinkt.Notifications.Controllers
 
             if (existingSettings == null) return false;
 
-            var updatedNotifications = existingSettings.Notifications.Append(new Domain.Notification(Guid.NewGuid(), newNotification.From, newNotification.Type)).ToArray();
+            var updatedNotifications = existingSettings.Notifications.Append(new Domain.Notification(Guid.NewGuid(), newNotification.From, newNotification.Type,newNotification.Seen)).ToArray();
 
             await _notificationRepository.AddNotification(new NotificationSettings(existingSettings.Id, existingSettings.UserId, existingSettings.MessageOn, existingSettings.PostOn,existingSettings.JobOn,existingSettings.FriendRequestOn, updatedNotifications));
 

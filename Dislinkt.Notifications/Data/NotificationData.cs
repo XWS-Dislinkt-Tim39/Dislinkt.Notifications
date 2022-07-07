@@ -11,6 +11,7 @@ namespace Dislinkt.Notifications.Data
 
         public Guid NotificationSettingsId { get; set; }
         public Guid From { get; set; }
+        public bool Seen { get; set; }
 
         public Type Type { get; set; }
     }

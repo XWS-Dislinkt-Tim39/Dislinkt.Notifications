@@ -10,6 +10,7 @@ namespace Dislinkt.Notifications.MongoDB.Entities
         public Guid From { get; set; }
 
         public Type Type { get; set; }
+        public bool Seen { get; set; }
 
         public static NotificationEntity ToNotificationEntity(Notification notification)
         {
@@ -18,6 +19,7 @@ namespace Dislinkt.Notifications.MongoDB.Entities
                 Id = notification.Id,
                 From = notification.From,
                 Type = notification.Type,
+                Seen = notification.Seen,
 
             };
 
@@ -26,7 +28,7 @@ namespace Dislinkt.Notifications.MongoDB.Entities
          => notifications.Select(p => ToNotificationEntity(p)).ToArray();
 
         public Notification ToNotification()
-            => new Notification(this.Id, this.From, this.Type);
+            => new Notification(this.Id, this.From, this.Type, this.Seen);
 
     }
 }
