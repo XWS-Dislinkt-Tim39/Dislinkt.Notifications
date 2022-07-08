@@ -38,6 +38,7 @@ namespace Dislinkt.Notifications.MongoDB.Repositories
 
             return result?.ToNotificationSettings() ?? null;
         }
+     
 
         public async Task<Notification> GetNotificationById(Guid id)
         {

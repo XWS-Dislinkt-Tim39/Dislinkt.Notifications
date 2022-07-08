@@ -68,6 +68,7 @@ namespace GrpcService
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapGrpcService<GreeterService>();
+                endpoints.MapGrpcService<AddNotificationService>();
 
                 endpoints.MapGet("/", async context =>
                 {
