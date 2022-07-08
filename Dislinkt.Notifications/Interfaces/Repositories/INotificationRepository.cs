@@ -9,10 +9,12 @@ namespace Dislinkt.Notifications.Interfaces.Repositories
     {
 
         Task CreateNotificationSettingsAsync(NewNotificationSettingsData settings);
-
+        Task UpdateNotificationSeenAsync(NotificationSeenUpdateData data);
         Task AddNotification(NotificationSettings settings);
         Task UpdateNotificationSettings(NewNotificationSettingsData settings);
-        Task<NotificationSettings> GetByUserId(Guid userId);
+        Task<NotificationSettings> GetAllByUserId(Guid userId);
+        Task<NotificationSettings> GetWithoutMessagesByUserId(Guid userId);
         Task<NotificationSettings> GetById(Guid id);
+        Task<Notification> GetNotificationById(Guid id);
     }
 }

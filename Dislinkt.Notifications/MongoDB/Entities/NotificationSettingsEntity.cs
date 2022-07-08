@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Dislinkt.Notifications.MongoDB.Entities
 {
-    [CollectionName("Notifications")]
+    [CollectionName("NotificationSettings")]
     public class NotificationSettingsEntity : BaseEntity
     {
         public Guid UserId { get; set; }

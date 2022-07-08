@@ -1,10 +1,12 @@
 ﻿using Dislinkt.Notifications.Domain;
+using Dislinkt.Notifications.MongoDB.Attributes;
 using System;
 using System.Linq;
 using Type = Dislinkt.Notifications.Domain.Type;
 
 namespace Dislinkt.Notifications.MongoDB.Entities
 {
+    [CollectionName("Notifications")]
     public class NotificationEntity : BaseEntity
     {
         public Guid From { get; set; }
