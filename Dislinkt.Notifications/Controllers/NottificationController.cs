@@ -38,10 +38,18 @@ namespace Dislinkt.Notifications.Controllers
         }
 
         [HttpGet]
-        [Route("/get-by-userId")]
-        public async Task<NotificationSettings> GetByFromAndTo(Guid userId)
+        [Route("/get-all-by-userId")]
+        public async Task<NotificationSettings> GetAll(Guid userId)
         {
-            var result = await _notificationRepository.GetByUserId(userId);
+            var result = await _notificationRepository.GetAllByUserId(userId);
+
+            return result;
+        }
+        [HttpGet]
+        [Route("/get-witout-messages-by-userId")]
+        public async Task<NotificationSettings> GetWithoutMessages(Guid userId)
+        {
+            var result = await _notificationRepository.GetWithoutMessagesByUserId(userId);
 
             return result;
         }
@@ -61,5 +69,18 @@ namespace Dislinkt.Notifications.Controllers
             return true;
 
         }
+
+        [HttpPost]
+        [Route("/update-notification-seen")]
+        public async Task Handle(NotificationSeenUpdateData data)
+        {
+      
+
+            await _notificationRepository.UpdateNotificationSeenAsync(data);
+
+       
+        }
+
+
     }
 }

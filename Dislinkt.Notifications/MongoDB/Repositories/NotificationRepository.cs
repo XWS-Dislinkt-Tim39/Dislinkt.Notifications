@@ -39,14 +39,33 @@ namespace Dislinkt.Notifications.MongoDB.Repositories
             return result?.ToNotificationSettings() ?? null;
         }
 
-        public async Task<NotificationSettings> GetByUserId(Guid userId)
+        public async Task<Notification> GetNotificationById(Guid id)
+        {
+            var result = await _queryExecutor.FindByIdAsync<NotificationEntity>(id);
+
+            return result?.ToNotification() ?? null;
+        }
+
+        public async Task<NotificationSettings> GetAllByUserId(Guid userId)
         {
             var filter = Builders<NotificationSettingsEntity>.Filter.Eq(u => u.UserId, userId);
-
+          
             var result= await _queryExecutor.FindAsync(filter);
 
             return result?.AsEnumerable()?.FirstOrDefault(u => u.UserId == userId)?.ToNotificationSettings() ?? null;
 
+        }
+
+        public async Task<NotificationSettings> GetWithoutMessagesByUserId(Guid userId)
+        {
+           // var filter = Builders<NotificationSettingsEntity>.Filter.Eq(u => u.UserId, userId);
+            var filter2 = Builders<NotificationSettingsEntity>.Filter.ElemMatch(u => u.Notifications, Builders<NotificationEntity>.Filter.Eq(u => u.Seen, false));
+
+            //filter &= filter2;
+            var result = await _queryExecutor.FindAsync(filter2);
+
+            return result?.AsEnumerable()?.FirstOrDefault(u => u.UserId == userId)?.ToNotificationSettings() ?? null;
+            
         }
 
         public async Task AddNotification(NotificationSettings settings)
@@ -67,6 +86,15 @@ namespace Dislinkt.Notifications.MongoDB.Repositories
                 .Set(u => u.PostOn, settings.PostOn)
                 .Set(u => u.JobOn, settings.JobOn)
                 .Set(u => u.FriendRequestOn, settings.FriendRequestOn);
+
+            await _queryExecutor.UpdateAsync(filter, update);
+        }
+
+        public async Task UpdateNotificationSeenAsync(NotificationSeenUpdateData data)
+        {
+            var filter = Builders<NotificationSettingsEntity>.Filter.ElemMatch(u => u.Notifications, Builders<NotificationEntity>.Filter.Eq(u => u.Id, data.NotificationId));
+
+            var update = Builders<NotificationSettingsEntity>.Update.Set(u => u.Notifications[-1].Seen, data.Seen);
 
             await _queryExecutor.UpdateAsync(filter, update);
         }
