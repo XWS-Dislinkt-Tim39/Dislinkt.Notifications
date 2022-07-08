@@ -13,7 +13,9 @@
     </ItemGroup>
   <ItemGroup>  
       <Protobuf Include="Protos\notificationSettings.proto" GrpcServices="Server" /> 
-  
+   </ItemGroup>  
+    <ItemGroup>  
+      <Protobuf Include="Protos\addNotification.proto" GrpcServices="Server" /> 
    </ItemGroup>  
 
 </Project>

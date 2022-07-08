@@ -9,7 +9,7 @@ namespace Dislinkt.Notifications.Data
     public class NotificationData
     {
 
-        public Guid NotificationSettingsId { get; set; }
+        public Guid UserId { get; set; }
         public Guid From { get; set; }
         public bool Seen { get; set; }
 
