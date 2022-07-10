@@ -82,7 +82,7 @@ namespace Dislinkt.Notifications.Controllers
 
             var actionName = ControllerContext.ActionDescriptor.DisplayName;
             using var scope = _tracer.BuildSpan(actionName).StartActive(true);
-            await _notificationRepository.DeleteByUserId(userId);
+            await _notificationRepository.DeleteByUserId(id);
 
 
 
