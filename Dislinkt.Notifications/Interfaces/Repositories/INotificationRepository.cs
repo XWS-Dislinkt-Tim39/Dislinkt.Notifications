@@ -8,7 +8,7 @@ namespace Dislinkt.Notifications.Interfaces.Repositories
     public interface INotificationRepository
     {
 
-        Task CreateNotificationSettingsAsync(NewNotificationSettingsData settings);
+        Task<bool> CreateNotificationSettingsAsync(NewNotificationSettingsData settings);
         Task UpdateNotificationSeenAsync(NotificationSeenUpdateData data);
         Task AddNotification(NotificationSettings settings);
         Task UpdateNotificationSettings(NewNotificationSettingsData settings);

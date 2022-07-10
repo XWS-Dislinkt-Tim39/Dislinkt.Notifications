@@ -19,7 +19,7 @@ namespace Dislinkt.Notifications.MongoDB.Repositories
             _queryExecutor = queryExecutor;
         }
 
-        public async Task CreateNotificationSettingsAsync(NewNotificationSettingsData settings)
+        public async Task<bool> CreateNotificationSettingsAsync(NewNotificationSettingsData settings)
         {
             try
             {
@@ -27,8 +27,10 @@ namespace Dislinkt.Notifications.MongoDB.Repositories
             }
             catch (MongoWriteException ex)
             {
-                throw ex;
+                Console.WriteLine(ex);
+                return false;
             }
+            return true;
 
         }
 
@@ -42,7 +44,7 @@ namespace Dislinkt.Notifications.MongoDB.Repositories
         public async Task DeleteByUserId(Guid userId)
         {
             var filter = Builders<NotificationSettingsEntity>.Filter.Eq(u => u.UserId, userId);
-             await _queryExecutor.DeleteByIdAsync<NotificationSettingsEntity>(filter);
+            await _queryExecutor.DeleteByIdAsync<NotificationSettingsEntity>(filter);
         }
 
 

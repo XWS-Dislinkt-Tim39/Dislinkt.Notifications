@@ -20,6 +20,14 @@ namespace Dislinkt.Notifications.Controllers
             _notificationRepository = notificationRepository;
         }
 
+        [HttpPost]
+        [Route("/create-notification-settings")]
+        public async Task<bool> CreateNotificationSettings([FromBody] NewNotificationSettingsData settings)
+        {
+            return await _notificationRepository.CreateNotificationSettingsAsync(settings);
+
+        }
+
 
         [HttpPost]
         [Route("/update-notification-settings")]
@@ -57,10 +65,10 @@ namespace Dislinkt.Notifications.Controllers
         }
 
         [HttpDelete]
-        [Route("/delete-by-userId")]
-        public async Task DeleteByUserId(Guid userId)
+        [Route("/delete-by-userId/{id}")]
+        public async Task DeleteByUserId(Guid id)
         {
-            await _notificationRepository.DeleteByUserId(userId);
+            await _notificationRepository.DeleteByUserId(id);
 
 
         }
