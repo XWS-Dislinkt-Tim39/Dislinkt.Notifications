@@ -56,6 +56,15 @@ namespace Dislinkt.Notifications.Controllers
        
         }
 
+        [HttpDelete]
+        [Route("/delete-by-userId")]
+        public async Task DeleteByUserId(Guid userId)
+        {
+            await _notificationRepository.DeleteByUserId(userId);
+
+
+        }
+
 
     }
 }

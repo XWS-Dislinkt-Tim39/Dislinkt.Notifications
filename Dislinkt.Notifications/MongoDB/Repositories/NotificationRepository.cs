@@ -38,7 +38,13 @@ namespace Dislinkt.Notifications.MongoDB.Repositories
 
             return result?.ToNotificationSettings() ?? null;
         }
-     
+
+        public async Task DeleteByUserId(Guid userId)
+        {
+            var filter = Builders<NotificationSettingsEntity>.Filter.Eq(u => u.UserId, userId);
+             await _queryExecutor.DeleteByIdAsync<NotificationSettingsEntity>(filter);
+        }
+
 
         public async Task<Notification> GetNotificationById(Guid id)
         {

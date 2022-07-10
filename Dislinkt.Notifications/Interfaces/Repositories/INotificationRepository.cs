@@ -15,6 +15,8 @@ namespace Dislinkt.Notifications.Interfaces.Repositories
         Task<NotificationSettings> GetAllByUserId(Guid userId);
         Task<NotificationSettings> GetWithoutMessagesByUserId(Guid userId);
         Task<NotificationSettings> GetById(Guid id);
+
+        Task DeleteByUserId(Guid userId);
         Task<Notification> GetNotificationById(Guid id);
     }
 }
