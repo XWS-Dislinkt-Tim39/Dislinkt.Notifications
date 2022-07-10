@@ -10,7 +10,7 @@ WORKDIR /src
 COPY ["./Dislinkt.Notifications/Dislinkt.Notifications/Dislinkt.Notifications.csproj", "Dislinkt.Notifications/"]
 
 COPY . .
-WORKDIR "/src/Dislinkt.Notifications"
+WORKDIR "./Dislinkt.Notifications/Dislinkt.Notifications"
 RUN dotnet build "Dislinkt.Notifications.csproj" -c Release -o /app/build
 
 FROM build AS publish
