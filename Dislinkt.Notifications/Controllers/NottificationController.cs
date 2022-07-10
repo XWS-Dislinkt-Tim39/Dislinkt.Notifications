@@ -46,8 +46,8 @@ namespace Dislinkt.Notifications.Controllers
         [Route("/get-all-by-userId")]
         public async Task<NotificationSettings> GetAll(Guid userId)
         {
-            var actionName = ControllerContext.ActionDescriptor.DisplayName;
-            using var scope = _tracer.BuildSpan(actionName).StartActive(true);
+            //var actionName = ControllerContext.ActionDescriptor.DisplayName;
+            //using var scope = _tracer.BuildSpan(actionName).StartActive(true);
             var result = await _notificationRepository.GetAllByUserId(userId);
 
             return result;
@@ -82,7 +82,7 @@ namespace Dislinkt.Notifications.Controllers
 
             var actionName = ControllerContext.ActionDescriptor.DisplayName;
             using var scope = _tracer.BuildSpan(actionName).StartActive(true);
-            await _notificationRepository.DeleteByUserId(userId);
+            await _notificationRepository.DeleteByUserId(id);
 
 
 
