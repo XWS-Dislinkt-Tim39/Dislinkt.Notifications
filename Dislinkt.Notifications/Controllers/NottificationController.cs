@@ -22,7 +22,12 @@ namespace Dislinkt.Notifications.Controllers
             _notificationRepository = notificationRepository;
             _tracer = tracer;
         }
-
+        [Route("")]
+        [HttpGet]
+        public string Index()
+        {
+            return "Hello from Auth/Controller";
+        }
         [HttpPost]
         [Route("/create-notification-settings")]
         public async Task<bool> CreateNotificationSettings([FromBody] NewNotificationSettingsData settings)
